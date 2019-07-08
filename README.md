@@ -95,14 +95,14 @@ class CardDeck: Deck {
 - `Player`: `Playerable` 프로토콜을 채택, 자신의 순서와 카드들을 갖고 있다.
   - `Playerable` 프로토콜
   - 딜러가 나눠주는 카드를 `take()` 한다.
-  - `PlayerPrintable` 프로토콜을 채택: 자신의 이름과 카드들을 프린트한다.
 - `Dealer`: `Playerable` 프로토콜을 채택, 카드덱을 갖고 있음
   - `Dealerable` 프로토콜
   -  플레이어에게 카드를 `deal()` 나눠준다.
   - 필요한 카드 수에 대해 덱에 카드가 충분한지 확인한다.
   - 덱을 관리한다.
 - `GameInfo`: `GameInfoable` 프로토콜을 채택, 게임모드와 참여자 수를 갖고 있다.
-- `CardGame`: `GameInfo`, `Dealer`, `Player` 를 이용해 게임을 세팅하고 진행한다.
+- `CardGame`: `OutputViewPrintable` 프로토콜을 채택, SettingResult를 클로저로 반환한다.
+  -  `GameInfo`, `Dealer`, `Player` 를 이용해 게임을 세팅하고 진행한다.
   - 딜러에게 카드의 개수가 충분한지 물어보고 충분하면 게임을 진행하고 충분하지 않으면 게임을 종료한다.
   - 참여자의 수만큼 Player 인스턴스를 생성한다. Dealer 인스턴스 또한 생성한다.
   - Player들에게 카드를 나눠준다. 
@@ -110,4 +110,8 @@ class CardDeck: Deck {
 
 <br>
 
-- `OutputView`: play 결과에 따라 출력
+- `OutputView`
+  - 게임의 `printSettingResult` 를 이용해 플레이어타입에 따라 "딜러", "플레이어 # order" 와 카드를 출력한다.
+
+<br>
+
